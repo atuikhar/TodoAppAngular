@@ -1,0 +1,19 @@
+input {
+  border-radius: 5px;
+  border: none;
+  background: #f4f4f4;
+
+  font-size: 20px;
+}
+.todo-style {
+  background: #f4f4f4;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px 10px 10px;
+}
+
+p,
+h1 {
+  color: #f4f4f4;
+}
