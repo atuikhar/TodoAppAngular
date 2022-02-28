@@ -1,0 +1,14 @@
+<form (ngSubmit)="onSubmit()" class="mb-5">
+  <div class="container text-center w-50">
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="text"
+      name="text"
+      required
+    />
+  </div>
+  <div class="container text-center mt-2">
+    <button [disabled]="!text" class="btn btn-primary btn-sm">Add Todo</button>
+  </div>
+</form>
