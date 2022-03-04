@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { TodoService } from '../../todo.service';
 import { Todo } from '../../todo.model';
 
@@ -11,9 +11,11 @@ import { faXbox } from '@fortawesome/free-brands-svg-icons';
   styleUrls: ['./todo-item.component.css'],
 })
 export class TodoItemComponent implements OnInit {
+  @Output() getDetails = new EventEmitter<any>();
   todos: Todo[];
   faTimesCircle = faTimesCircle;
   faXbox = faXbox;
+  todo: Todo[];
 
   constructor(private todoService: TodoService) {}
 
@@ -25,5 +27,10 @@ export class TodoItemComponent implements OnInit {
 
   onDelete(todo: Todo) {
     this.todoService.deleteTodo(todo);
+  }
+  onClick(todo: Todo) {
+    this.todoService.getTodosById(todo.id).subscribe((todo) => {
+      this.todo = todo;
+    });
   }
 }

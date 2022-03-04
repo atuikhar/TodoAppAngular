@@ -1,7 +1,11 @@
 <div class="container mt-5">
   <div class="container w-50 w-100-md mt-3" *ngFor="let t of todos">
     <div class="row todo-style">
-      <div class="col-md-6 col-sm-6 col-xs-8" (dblclick)="onToggle(t)">
+      <div
+        class="col-md-6 col-sm-6 col-xs-8"
+        routerLink="/todo/:id"
+        (click)="onClick(t)"
+      >
         <h5 class="m-0">{{ t.text }}</h5>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-4 text-end">

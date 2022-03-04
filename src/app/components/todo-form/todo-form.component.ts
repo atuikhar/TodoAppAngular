@@ -10,7 +10,6 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class TodoFormComponent implements OnInit {
   text: string;
-  id: string;
   todos: Todo[];
   completed: boolean = false;
 
@@ -23,9 +22,14 @@ export class TodoFormComponent implements OnInit {
       alert('Please Add a Todo');
       return;
     }
-
+    if (localStorage.getItem('todos') === null) {
+      this.todos = [];
+    } else {
+      this.todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    let Id = this.todos.length + 1;
     const newTodo = {
-      id: uuidv4(),
+      id: Id,
       text: this.text,
       completed: this.completed,
     };

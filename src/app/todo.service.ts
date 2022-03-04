@@ -18,6 +18,15 @@ export class TodoService {
 
     return of(this.todos);
   }
+  getTodosById(id: number): Observable<Todo[]> {
+    if (localStorage.getItem('todos') === null) {
+      this.todos = [];
+    } else {
+      this.todos = JSON.parse(localStorage.getItem('todos'));
+    }
+    this.todos.filter((t) => t.id === id);
+    return of(this.todos);
+  }
 
   addTodo(todo: Todo) {
     this.todos.unshift(todo);
